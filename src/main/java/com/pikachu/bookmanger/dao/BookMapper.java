@@ -21,7 +21,9 @@ public interface BookMapper {
 
     int addBook(Book book);
 
-    void updateBookStatus(int id, int status);
+    void updateBookById(Book book);
+
+    void deleteBook(int id);
 
 
 }

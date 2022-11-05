@@ -28,15 +28,31 @@
     </select>
 
     <insert id="addBook" parameterType="com.pikachu.bookmanger.model.Book">
-        insert into
-        s_book
-        values (#{id},#{name},#{author},#{price})
+        insert into s_book
+        values (#{id}, #{name}, #{author}, #{price})
     </insert>
 
-    <update id="updateBookStatus" parameterType="int">
-
+    <update id="updateBookById" parameterType="com.pikachu.bookmanger.model.Book">
+        UPDATE s_book
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="author != null">
+                author = #{author,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
     </update>
 
+    <delete id="deleteBook" parameterType="int">
+        delete
+        from s_book
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
 
 
 </mapper>

@@ -37,7 +37,14 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void updateBookById(int i) {
-
+    public void updateBookById(Book book) {
+        bookmanger.updateBookById(book);
     }
+
+    @Override
+    public void deleteBook(int id) {
+        bookmanger.deleteBook(id);
+    }
+
+
 }

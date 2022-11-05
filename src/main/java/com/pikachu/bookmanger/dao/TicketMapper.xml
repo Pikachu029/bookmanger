@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pikachu.bookmanger.dao.TicketMapper">
+
+    <insert id="addTicket" parameterType="com.pikachu.bookmanger.model.Ticket">
+        insert into s_ticket
+        values (#{id}, #{userId}, #{ticket}, #{expiredAt})
+    </insert>
+    <select id="selectByUserId" resultType="com.pikachu.bookmanger.model.Ticket" parameterType="int">
+        select *
+        from s_ticket
+        where userid = #{userid}
+    </select>
+    <select id="selectByTicket" resultType="com.pikachu.bookmanger.model.Ticket">
+        select *
+        from s_ticket
+        where ticket = #{ticket}
+    </select>
+    <delete id="deleteTicketById" parameterType="int">
+        delete
+        from s_ticket
+        where id = #{id}
+    </delete>
+    <delete id="deleteTicket" parameterType="string">
+        delete
+        from s_ticket
+        where ticket = #{ticket}
+    </delete>
+
+</mapper>
